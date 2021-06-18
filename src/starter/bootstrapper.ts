@@ -1,11 +1,11 @@
 
 import { eventLoader } from './eventLoader'
 import { Client } from 'discord.js'
+import databaseConnection from '../db/db'
 
 async function tryLogin(client: Client) {
-
     const botToken = process.env.DISCORD_BOT_TOKEN
-
+    
     try {
         await client.login(botToken)
     } catch (err) {
@@ -16,8 +16,8 @@ async function tryLogin(client: Client) {
     return true
 }
 
-async function sleep(ms : number) {
-    return new Promise( (resolve, reject) => {
+async function sleep(ms: number) {
+    return new Promise((resolve) => {
         setTimeout(() => {
             resolve(ms)
         }, ms)
@@ -30,7 +30,8 @@ export async function applicationStarter() {
 
     if (!(await tryLogin(client)))
         return
-    
-    await eventLoader(client)
+        
+    await databaseConnection()
 
+    await eventLoader(client)
 }

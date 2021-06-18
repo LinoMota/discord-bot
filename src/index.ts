@@ -1,4 +1,4 @@
-import { applicationStarter } from './starter/bootstraper'
+import { applicationStarter } from './starter/bootstrapper'
 import * as dotenv from 'dotenv'
 import * as path from 'path'
 

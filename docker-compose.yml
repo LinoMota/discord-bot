@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  mongodb:
+    image: mongo:4.4-bionic
+    container_name: discord-botson-mongo
+
+    env_file: .env
+
+    volumes:
+      - ./data/:/data/db
+
+    ports:
+      - ${MONGO_PORT}:${MONGO_PORT}
+
